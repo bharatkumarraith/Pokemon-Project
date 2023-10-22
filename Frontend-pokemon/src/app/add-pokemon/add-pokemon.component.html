@@ -1,0 +1,49 @@
+<button mat-icon-button style="float:right;margin: 5px; color: rgb(49, 49, 127);" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+
+<mat-dialog-content>
+    <header>
+        <h1>Add Pokemon</h1>
+    </header>
+
+    <div id="one">
+        <form class="form" (ngSubmit)="onSubmit()" [formGroup]="livestream">
+            <mat-form-field>
+                <label>Enter PokemonId:</label>
+                <input matInput placeholder="Id*" type="text" formControlName="id">
+            </mat-form-field><br>
+            <mat-form-field>
+                <label>Enter PokemonName:</label>
+                <input matInput placeholder="Name*" type="text" formControlName="name">
+            </mat-form-field><br>
+
+            <mat-form-field>
+                <label>Enter PokemonType:</label>
+                <input matInput placeholder="Type*" type="text" formControlName="type" />
+            </mat-form-field><br>
+
+            <mat-form-field>
+                <label>Enter PokemonHeight:</label>
+                <input matInput placeholder="Height*" type="number" formControlName="height" />
+            </mat-form-field><br>
+
+            <mat-form-field>
+                <label>Enter PokemanHealth:</label>
+                <input matInput placeholder="Health*" type="number" formControlName="health" />
+            </mat-form-field><br>
+
+            <mat-form-field>
+                <label>Enter PokemanPower:</label>
+                <input matInput placeholder="Power*" type="number" formControlName="power" />
+            </mat-form-field><br>
+
+            <mat-dialog-actions align="end">
+                <button class="reset-button" color="warn" mat-raised-button type="button"
+                    (click)="onSubmit()">Reset</button>
+                <button class="submit-button" color="primary" mat-raised-button [disabled]="!livestream.valid"
+                    type="submit">Submit</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</mat-dialog-content>

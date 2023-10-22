@@ -1,0 +1,22 @@
+/* Add this CSS in your component's CSS file or global CSS to style the form */
+
+/* Center the form in the middle of the dialog */
+
+mat-dialog-content{
+    width: 300px;
+    height: 600px;
+}
+
+header{
+   position: relative;
+   top:-20px;
+   color:gold;
+}
+form{
+    position: relative;
+    top:-40px;
+}
+label{
+    color: black;
+    font-weight: bolder;
+}
