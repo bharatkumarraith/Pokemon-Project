@@ -1,9 +1,11 @@
 
 .pokemon-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 8px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
   justify-items: center;
+ 
+
 }
 
 .pokemon-card {
@@ -16,11 +18,16 @@
   width: 200px;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 
+
+  display: inline-block;
+  margin: 10px; /* Adjust the margin as needed to control the gap between cards */
+  padding: 10px;
+  background-color: #f0f0f0;
+
 }
 
 .pokemon-card img {
-  max-width: 200px;
-  max-height: 80px;
+
   margin-top: -17px;
 }
 
@@ -72,7 +79,7 @@ button:hover {
 #se {
   width: 300px; 
   padding: 10px; 
-  border: 1px solid #ccc; 
+  border: 2px solid black; 
   border-radius: 5px; 
   font-size: 16px; 
   margin-left: 600px;
@@ -91,8 +98,8 @@ h1 {
   right: -10px;
 }
 .readmore-section {
-  overflow-y: auto; /* Add a vertical scrollbar when the content overflows */
-  max-height: 150px; /* Set a maximum height for the readmore section */
+  overflow-y: auto; 
+  max-height: 150px; 
 }
 
 #ad{
@@ -117,3 +124,7 @@ pagination-controls{
   bottom: -15px;
 }
 
+img{
+  width: 150px;
+  height: auto;
+}

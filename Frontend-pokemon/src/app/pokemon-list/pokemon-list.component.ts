@@ -36,7 +36,7 @@ this.getPokemons();
 
   getPokemons()
   {
-    this.service.getPokemons(12,this.page+0).subscribe((response: any) => {
+    this.service.getPokemons(10,this.page+0).subscribe((response: any) => {
      
       this.totalPokemons=response.count;
       
