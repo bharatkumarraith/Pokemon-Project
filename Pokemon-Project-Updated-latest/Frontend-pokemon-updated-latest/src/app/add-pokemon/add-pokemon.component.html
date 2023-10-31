@@ -1,0 +1,65 @@
+<input id="se" type="text" placeholder="Search By PokemonName....." [(ngModel)]="searchQuery"
+    (ngModelChange)="search()">
+
+<button routerLink="/home" id="hom" mat-raised-button color="primary"><mat-icon>arrow_back</mat-icon>home</button>
+<button id="po" routerLink="/cards"  mat-raised-button color="accent">Pokemon-List</button>
+<div>
+    <mat-card class="example-card"
+        *ngFor="let poke of pokemons| paginate: { itemsPerPage: 10, currentPage: p };let i = index">
+        <mat-card-header>
+
+            <mat-card-title>{{poke.name}}
+            </mat-card-title>
+
+        </mat-card-header>
+        <img mat-card-image [src]="poke.sprites.front_default" alt="{{poke.name}} Image">
+
+        <h1 *ngIf="readMoreStates[i]">
+            <mat-card-subtitle>ID: {{ poke.id }}</mat-card-subtitle>
+            <mat-card-subtitle>HEIGHT: {{ poke.height }}</mat-card-subtitle>
+            <mat-card-subtitle>ORDER: {{ poke.order }}</mat-card-subtitle>
+            <mat-card-subtitle>BASE_EXPERIENCE: {{ poke.base_experience }}</mat-card-subtitle>
+        </h1>
+        <button mat-raised-button color="accent" (click)="toggleReadMore(i)">
+            {{ readMoreStates[i] ? 'Read Less' : 'Read More' }}
+        </button>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="updatePokemon(poke)">UPDATE</button>
+            <button style="margin-left: 10px;" mat-raised-button color="warn" (click)="delete(poke.id)">DELETE</button>
+
+
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+
+
+
+
+<div id="editin" *ngIf="isEditMode">
+    <form [formGroup]="editdocuments" (ngSubmit)="sendupdateDocumentData()" class="form-card">
+        <label class="form-label">Pokemon ID:</label>
+        <input type="text" formControlName="id" class="form-input" />
+
+        <label class="form-label">Name:</label>
+        <input type="text" formControlName="name" class="form-input" />
+
+        <label class="form-label">Height:</label>
+        <input type="text" formControlName="height" class="form-input" />
+
+        <label class="form-label">Order:</label>
+        <input type="text" formControlName="order" class="form-input" />
+
+        <label class="form-label">Base Experience:</label>
+        <input type="text" formControlName="base_experience" class="form-input" />
+
+        <label class="form-label">Image:</label>
+        <input type="text" formControlName="sprites" class="form-input" />
+
+        <input type="submit" value="Update" class="form-submit" />
+    </form>
+</div>
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<app-footer></app-footer>

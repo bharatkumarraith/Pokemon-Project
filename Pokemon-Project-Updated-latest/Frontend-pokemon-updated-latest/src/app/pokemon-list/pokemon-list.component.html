@@ -1,0 +1,66 @@
+<div class="center-container">
+  <input id="se" type="text" placeholder="Search By PokemonName....." [(ngModel)]="searchQuery"
+    (ngModelChange)="search()">
+</div>
+
+<button routerLink="/home" id="hom" mat-raised-button color="primary"><mat-icon>arrow_back</mat-icon>home</button>
+<button id="ad" mat-raised-button color="primary" (click)="add()">Add Pokemon</button>
+<div class="pokemon-grid">
+  <div class="box"
+    *ngFor="let poke of pokemons  | paginate: {itemsPerPage:10, currentPage:page, totalItems:totalPokemons};let i = index">
+    <div class="pokemon-card">
+      <img [src]="poke.sprites.front_default" alt="{{poke.name}} Image">
+      <h1>{{poke.name}}</h1>
+      <div class="pokemon-info">
+        <div>
+          <strong id="st">Type:</strong>
+          <p id="tp">{{poke.height}}</p>
+        </div>
+        <div>
+          <strong id="st">Height:</strong>
+          <p id="tp">{{poke.height}}</p>
+        </div>
+        <div>
+          <strong id="st">Health:</strong>
+          <p id="tp">{{poke.stats[0].base_stat}}</p>
+        </div>
+
+        <p>"Discover the unique qualities of "{{poke.name}}"......</p>
+      </div>
+      <div *ngIf="showDetails[i]">
+
+        <div>
+          <strong id="">Base-Experience:</strong>
+          <p id="">{{poke.base_experience}}</p>
+        </div>
+        <div>
+          <strong id="">Order:</strong>
+          <p id="">{{poke.order}}</p>
+        </div>
+        <div>
+          <strong id="">Power:</strong>
+          <p id="">{{poke.stats[1].base_stat}}</p>
+        </div>
+        <div>
+          <strong id="">Game-Index:</strong>
+          <p id="">{{poke.game_indices[0].game_index}}</p>
+        </div>
+        <div>
+          <strong id="">Abilityname:</strong>
+          <p id="">{{poke.abilities[0].ability.name}}</p>
+        </div>
+        <div>
+          <strong id="">Id:</strong>
+          <p id="">{{poke.id}}</p>
+        </div>
+      </div>
+      <button (click)="toggleDetails(i)">{{showDetails[i] ? 'Read Less' : 'Read More'}}</button>
+      
+    </div>
+
+  </div>
+</div>
+
+<pagination-controls (pageChange)="page= $event; pokemons=[]; getPokemons()"></pagination-controls>
+
+<app-footer></app-footer>
